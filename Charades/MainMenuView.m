@@ -6,18 +6,20 @@
 //  Copyright (c) 2013 Joshua Martin. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainMenuView.h"
 
-@interface ViewController ()
+@interface MainMenuView ()
 
 @end
 
-@implementation ViewController
+@implementation MainMenuView
+
+@synthesize name;
 
 - (void)viewDidLoad
 {
+    NSLog(@"%@",name);
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
