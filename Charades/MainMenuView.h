@@ -10,9 +10,7 @@
 
 @interface MainMenuView : UIViewController
 {
-    NSString *name;
-}
 
-@property (nonatomic, copy) NSString *name;
+}
 
 @end

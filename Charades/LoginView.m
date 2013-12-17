@@ -14,7 +14,7 @@
 
 @implementation LoginView
 
-@synthesize Login, Username_textfield, Password_textfield;
+@synthesize Login, Register, Username_textfield, Password_textfield;
 
 //Login
 -(IBAction)Login:(id)sender
@@ -45,6 +45,12 @@
     }
 }
 
+//Load Register View
+-(IBAction)Register:(id)sender
+{
+    [self performSegueWithIdentifier:@"register" sender:sender];
+}
+
 //Other Methods
 -(IBAction)keyboardhide:(id)sender
 {
@@ -53,9 +59,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"login"]) {
-          MainMenuView *mainmenu = [segue destinationViewController];
-     //   mainmenu.self.name = Username_textfield.text; //example how to pass info to next view
-     //   NSLog(@"%@", mainmenu.name);
+          //pass values if needed
     }
 }
 

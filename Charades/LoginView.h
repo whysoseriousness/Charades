@@ -15,13 +15,12 @@
 }
 
 @property (strong,nonatomic) IBOutlet UIButton *Login;
+@property (strong,nonatomic) IBOutlet UIButton *Register;
 @property(nonatomic, retain)IBOutlet UITextField *Username_textfield;
 @property(nonatomic, retain)IBOutlet UITextField *Password_textfield;
 
 - (IBAction)Login:(id)sender;
-- (IBAction)keyboardhide:(id)sender;
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender;
+- (IBAction)Register:(id)sender;
 
 @end
 

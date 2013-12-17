@@ -14,11 +14,8 @@
 
 @implementation MainMenuView
 
-@synthesize name;
-
 - (void)viewDidLoad
 {
-    NSLog(@"%@",name);
     [super viewDidLoad];
 }
 
