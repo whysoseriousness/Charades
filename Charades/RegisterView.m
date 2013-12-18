@@ -20,8 +20,17 @@
 
 -(IBAction)Register:(id)sender
 {
+    //Post Credentials
+    NSString *AuthenticationRequest = [NSString stringWithFormat:@"http://dylanellington.com/charades/registeruser.php?username=%@&firstname=%@&lastname=%@&email=%@&password=%@", Username_textfield.text, Firstname_textfield.text, Lastname_textfield.text, Email_textfield.text, Password_textfield.text];
+        
+    //Retrieve Result
+    NSData *RetreivedResult = [NSData dataWithContentsOfURL:[NSURL URLWithString:AuthenticationRequest]];
+        
+    //Put Returned Value Into String
+    NSString *Result = [[NSString alloc] initWithData:RetreivedResult encoding:NSUTF8StringEncoding];
     
-}
+    NSLog(@"%@s", Result);
+   }
 
 -(IBAction)Cancel:(id)sender
 {

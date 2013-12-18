@@ -117,6 +117,9 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="Register:" destination="B1Y-jJ-Wak" eventType="touchUpInside" id="boX-JV-wje"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wke-bb-0Qd">
                                 <rect key="frame" x="113" y="73" width="187" height="30"/>
@@ -190,6 +193,12 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="Cancel" destination="Fxy-Lx-qha" id="M3I-Fm-h0x"/>
+                        <outlet property="Email_textfield" destination="zGC-cv-yv2" id="jcy-6v-OTL"/>
+                        <outlet property="Firstname_textfield" destination="LvS-hi-Cua" id="9kv-Ll-RKe"/>
+                        <outlet property="Lastname_textfield" destination="ZGE-PU-8Xs" id="9Oq-oG-zBd"/>
+                        <outlet property="Password_textfield" destination="8z0-bY-3rl" id="kfF-Zt-cvE"/>
+                        <outlet property="Register" destination="ljA-Fi-xRU" id="y0e-32-Bhu"/>
+                        <outlet property="Username_textfield" destination="Wke-bb-0Qd" id="DdR-TJ-Dvd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cQV-70-MO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
