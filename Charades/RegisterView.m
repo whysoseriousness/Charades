@@ -14,6 +14,21 @@
 
 @implementation RegisterView
 
+@synthesize Username_textfield, Firstname_textfield, Lastname_textfield, Email_textfield, Password_textfield, Register, Cancel;
+
+//Main Methods
+
+-(IBAction)Register:(id)sender
+{
+    
+}
+
+-(IBAction)Cancel:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+//Other Methods
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

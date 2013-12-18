@@ -105,6 +105,9 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="Cancel:" destination="B1Y-jJ-Wak" eventType="touchUpInside" id="kgH-Mq-wQY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljA-Fi-xRU">
                                 <rect key="frame" x="72" y="317" width="68" height="31"/>
@@ -185,6 +188,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="P4f-Ri-t2Y"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="Cancel" destination="Fxy-Lx-qha" id="M3I-Fm-h0x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cQV-70-MO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
