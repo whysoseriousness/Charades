@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainMenuView : UIViewController
+@interface MainMenuView : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
-
+    NSArray *friends;
 }
+
+@property (strong,nonatomic) IBOutlet UIButton *Refresh;
+@property (strong, nonatomic) NSArray *friends;
+
+-(IBAction)Refresh:(id)sender;
 
 @end

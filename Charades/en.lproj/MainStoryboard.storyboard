@@ -205,10 +205,10 @@
             </objects>
             <point key="canvasLocation" x="2429" y="441"/>
         </scene>
-        <!--View Controller-->
+        <!--Main Menu View-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" sceneMemberID="viewController">
+                <viewController id="2" customClass="MainMenuView" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4dg-0o-xwW"/>
                         <viewControllerLayoutGuide type="bottom" id="3h1-gT-GUY"/>
@@ -217,8 +217,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2mj-Vr-N4u">
-                                <rect key="frame" x="0.0" y="49" width="320" height="491"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2mj-Vr-N4u">
+                                <rect key="frame" x="0.0" y="98" width="320" height="484"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="eUY-fM-iCe">
@@ -247,9 +247,13 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="2" id="Jsq-hE-JzD"/>
+                                    <outlet property="delegate" destination="2" id="hjI-NW-TGp"/>
+                                </connections>
                             </tableView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Charades With Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEj-c9-zp8">
-                                <rect key="frame" x="20" y="20" width="280" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Charades With Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEj-c9-zp8">
+                                <rect key="frame" x="20" y="20" width="280" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="PV1-UJ-euq"/>
                                 </constraints>
@@ -263,12 +267,30 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lye-Fn-Gw2">
+                                <rect key="frame" x="278" y="56" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="Refresh:" destination="2" eventType="touchUpInside" id="3gB-X1-Zvv"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EeR-iT-iug">
+                                <rect key="frame" x="20" y="53" width="250" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Friends"/>
+                                    <segment title="Games"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.40784317255020142" green="0.60392159223556519" blue="0.79215693473815918" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="2mj-Vr-N4u" firstAttribute="leading" secondItem="3" secondAttribute="leading" id="1JH-Ym-QmV"/>
+                            <constraint firstItem="2mj-Vr-N4u" firstAttribute="top" secondItem="EeR-iT-iug" secondAttribute="bottom" constant="17" id="43q-nA-xIm"/>
                             <constraint firstAttribute="bottom" secondItem="2mj-Vr-N4u" secondAttribute="bottom" constant="20" symbolic="YES" id="4zm-SZ-iqf"/>
-                            <constraint firstItem="2mj-Vr-N4u" firstAttribute="top" secondItem="qEj-c9-zp8" secondAttribute="bottom" constant="8" symbolic="YES" id="7Zw-W3-PHj"/>
                             <constraint firstItem="E71-zw-lNZ" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" id="9MI-E8-aNN"/>
                             <constraint firstAttribute="trailing" secondItem="qEj-c9-zp8" secondAttribute="trailing" constant="20" symbolic="YES" id="Jdp-eh-IEJ"/>
                             <constraint firstItem="qEj-c9-zp8" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" id="Klr-5Q-g3w"/>
@@ -280,15 +302,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="LxI-gP-F7V"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="Refresh" destination="lye-Fn-Gw2" id="NoN-48-tyC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2411" y="-314"/>
         </scene>
-        <!--Main Menu View-->
+        <!--View Controller-->
         <scene sceneID="pjv-gl-88Z">
             <objects>
-                <viewController id="ZGa-ag-QcB" customClass="MainMenuView" sceneMemberID="viewController">
+                <viewController id="ZGa-ag-QcB" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eWF-Ic-yPz"/>
                         <viewControllerLayoutGuide type="bottom" id="gbM-aE-8dJ"/>
