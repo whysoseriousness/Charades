@@ -42,7 +42,7 @@ int userid = 1;
     
     [self.tableView reloadData];
     
-    NSLog(@"%@", [json objectAtIndex:0]);
+//    NSLog(@"%@", [json objectAtIndex:0]);
 }
 
 - (void) retrieveGames
@@ -115,6 +115,8 @@ int userid = 1;
 {
     [super viewDidLoad];
     self.friends = [[NSArray alloc] initWithObjects:@"", nil];
+    NSDictionary * currentUser = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentUser"];
+    userid = [[currentUser objectForKey:@"userid"] intValue];
     [self retrieveFriends];
 }
 

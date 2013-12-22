@@ -29,8 +29,27 @@
     NSString *Result = [[NSString alloc] initWithData:RetreivedResult encoding:NSUTF8StringEncoding];
     
     //Validate Posted Credentials
-    if ([Result isEqualToString:@"success"])
+    if (![Result isEqualToString:@"failure"])
     {
+        
+        
+        NSError* error;
+        NSArray* json = [NSJSONSerialization
+                         JSONObjectWithData:RetreivedResult //1
+                         
+                         options:kNilOptions
+                         error:&error];
+
+//    
+//        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:RetreivedResult options:NSJSONReadingMutableContainers error:&error];
+//        
+        if (json) {
+            [[NSUserDefaults standardUserDefaults] setObject:json forKey:@"currentUser"];
+        }
+        
+        
+        NSLog(@"%@", Result);
+        
         [self performSegueWithIdentifier:@"login" sender:sender];
     }
     else
