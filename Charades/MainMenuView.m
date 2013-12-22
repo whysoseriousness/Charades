@@ -38,9 +38,12 @@ int userid = 1;
                           options:kNilOptions
                           error:&error];
  
-    self.friends = [json objectAtIndex:0];
+//    NSLog(@"%d", );
+    if( json && ![[NSString stringWithFormat:@"%@", [json objectAtIndex:0] ] isEqualToString:@"<null>"]){
+        self.friends = [json objectAtIndex: 0];
+        [self.tableView reloadData];
+    }
     
-    [self.tableView reloadData];
     
 //    NSLog(@"%@", [json objectAtIndex:0]);
 }
@@ -105,7 +108,19 @@ int userid = 1;
     if (buttonindex == 1)
     {
         NSString *username = [addfriend textFieldAtIndex:0].text;
-        NSLog(@"%@", username);
+        NSString *AuthenticationRequest = [NSString stringWithFormat:@"http://dylanellington.com/charades/addfriend.php?userid=%d&friendusername=%@", userid, username];
+        
+        NSData *RetreivedResult = [NSData dataWithContentsOfURL:[NSURL URLWithString:AuthenticationRequest]];
+        
+        //Put Returned Value Into String
+        NSString *Result = [[NSString alloc] initWithData:RetreivedResult encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"%@", Result);
+        if ([Result isEqualToString: @"Success."]) {
+            [self retrieveFriends];
+        }
+
+//        NSLog(@"result: %@", AuthenticationRequest);
     }
 }
 
@@ -114,7 +129,7 @@ int userid = 1;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.friends = [[NSArray alloc] initWithObjects:@"", nil];
+    self.friends = [NSArray arrayWithObject:[NSDictionary dictionaryWithObject:@"" forKey:@"friendusername"] ];
     NSDictionary * currentUser = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentUser"];
     userid = [[currentUser objectForKey:@"userid"] intValue];
     [self retrieveFriends];
