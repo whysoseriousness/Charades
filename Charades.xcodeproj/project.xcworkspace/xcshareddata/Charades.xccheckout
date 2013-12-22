@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>380ABC1B-B44B-4888-8830-F3A5396E2FEA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Charades</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>69EE25C6-8B08-45E2-A1BE-2B3047FFED24</key>
+		<string>https://github.com/whysoseriousness/Charades.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Charades.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>69EE25C6-8B08-45E2-A1BE-2B3047FFED24</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/whysoseriousness/Charades.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>69EE25C6-8B08-45E2-A1BE-2B3047FFED24</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>69EE25C6-8B08-45E2-A1BE-2B3047FFED24</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Charades</string>
+		</dict>
+	</array>
+</dict>
+</plist>

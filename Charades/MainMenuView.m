@@ -29,9 +29,20 @@ int userid = 1;
     NSData *RetreivedResult = [NSData dataWithContentsOfURL:[NSURL URLWithString:AuthenticationRequest]];
     
     //Put Returned Value Into String
-    NSString *Result = [[NSString alloc] initWithData:RetreivedResult encoding:NSUTF8StringEncoding];
+    //NSString *Result = [[NSString alloc] initWithData:RetreivedResult encoding:NSUTF8StringEncoding];
     
-    NSLog(@"%@", Result);
+    NSError* error;
+    NSArray* json = [NSJSONSerialization
+                          JSONObjectWithData:RetreivedResult //1
+                          
+                          options:kNilOptions
+                          error:&error];
+ 
+    self.friends = [json objectAtIndex:0];
+    
+    [self.tableView reloadData];
+    
+    NSLog(@"%@", [json objectAtIndex:0]);
 }
 
 - (void) retrieveGames
@@ -55,7 +66,7 @@ int userid = 1;
     }
     
     // Configure the cell
-    cell.textLabel.text = [self.friends objectAtIndex:[indexPath row]];
+    cell.textLabel.text = [[self.friends objectAtIndex:[indexPath row]] objectForKey:@"friendusername"];
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     return cell;
 }
@@ -103,8 +114,8 @@ int userid = 1;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.friends = [[NSArray alloc] initWithObjects:@"", nil];
     [self retrieveFriends];
-    self.friends = [[NSArray alloc] initWithObjects:@"Dylan", @"Joshua", nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -113,4 +124,8 @@ int userid = 1;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+    [_tableView release];
+    [super dealloc];
+}
 @end

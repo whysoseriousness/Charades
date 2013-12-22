@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *Friends_Games_Add;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *Friends_Games_Selector;
 @property (strong, nonatomic) NSArray *friends;
+@property (retain, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)Friends_Games_Load:(id)sender;
 - (IBAction)Friends_Games_Add:(id)sender;
