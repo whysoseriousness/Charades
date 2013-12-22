@@ -28,24 +28,15 @@ int userid = 1;
     //Retrieve Result
     NSData *RetreivedResult = [NSData dataWithContentsOfURL:[NSURL URLWithString:AuthenticationRequest]];
     
-    //Put Returned Value Into String
-    //NSString *Result = [[NSString alloc] initWithData:RetreivedResult encoding:NSUTF8StringEncoding];
-    
+    //Parse Data Into Array
     NSError* error;
-    NSArray* json = [NSJSONSerialization
-                          JSONObjectWithData:RetreivedResult //1
-                          
-                          options:kNilOptions
-                          error:&error];
- 
-//    NSLog(@"%d", );
-    if( json && ![[NSString stringWithFormat:@"%@", [json objectAtIndex:0] ] isEqualToString:@"<null>"]){
+    NSArray* json = [NSJSONSerialization JSONObjectWithData:RetreivedResult options:kNilOptions error:&error];
+    
+    if( json && ![[NSString stringWithFormat:@"%@", [json objectAtIndex:0] ] isEqualToString:@"<null>"])
+    {
         self.friends = [json objectAtIndex: 0];
         [self.tableView reloadData];
     }
-    
-    
-//    NSLog(@"%@", [json objectAtIndex:0]);
 }
 
 - (void) retrieveGames
@@ -112,15 +103,30 @@ int userid = 1;
         
         NSData *RetreivedResult = [NSData dataWithContentsOfURL:[NSURL URLWithString:AuthenticationRequest]];
         
-        //Put Returned Value Into String
         NSString *Result = [[NSString alloc] initWithData:RetreivedResult encoding:NSUTF8StringEncoding];
         
-        NSLog(@"%@", Result);
-        if ([Result isEqualToString: @"Success."]) {
+        if ([Result isEqualToString: @"Success."])
+        {
             [self retrieveFriends];
         }
+        
+        if ([Result isEqualToString: @"You are already friends with this user."])
+        {
+            UIAlertView * addfrienderror = [[UIAlertView alloc] initWithTitle:@"You're Already Friends With This User" message:@"" delegate:self cancelButtonTitle:@"Hide" otherButtonTitles: nil];
+            
+            addfrienderror.alertViewStyle = UIAlertViewStyleDefault;
+            [addfrienderror show];
+            [addfrienderror release];
+        }
 
-//        NSLog(@"result: %@", AuthenticationRequest);
+        if ([Result isEqualToString: @"Username doesn't exist."])
+        {
+            UIAlertView * addfrienderror = [[UIAlertView alloc] initWithTitle:@"Username Doesn't Exist" message:@"" delegate:self cancelButtonTitle:@"Hide" otherButtonTitles: nil];
+            
+            addfrienderror.alertViewStyle = UIAlertViewStyleDefault;
+            [addfrienderror show];
+            [addfrienderror release];
+        }
     }
 }
 

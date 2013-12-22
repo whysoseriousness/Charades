@@ -31,24 +31,13 @@
     //Validate Posted Credentials
     if (![Result isEqualToString:@"failure"])
     {
-        
-        
         NSError* error;
-        NSArray* json = [NSJSONSerialization
-                         JSONObjectWithData:RetreivedResult //1
-                         
-                         options:kNilOptions
-                         error:&error];
-
-//    
-//        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:RetreivedResult options:NSJSONReadingMutableContainers error:&error];
-//        
-        if (json) {
+        NSArray* json = [NSJSONSerialization JSONObjectWithData:RetreivedResult options:kNilOptions error:&error];
+      
+        if (json)
+        {
             [[NSUserDefaults standardUserDefaults] setObject:json forKey:@"currentUser"];
         }
-        
-        
-        NSLog(@"%@", Result);
         
         [self performSegueWithIdentifier:@"login" sender:sender];
     }
