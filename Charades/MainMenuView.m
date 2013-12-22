@@ -13,7 +13,7 @@
 @end
 
 @implementation MainMenuView
-@synthesize friends, Refresh;
+@synthesize friends, Friends_Games_Add, Friends_Games_Selector;
 
 //Variables
 int userid = 1;
@@ -31,12 +31,12 @@ int userid = 1;
     //Put Returned Value Into String
     NSString *Result = [[NSString alloc] initWithData:RetreivedResult encoding:NSUTF8StringEncoding];
     
-    NSLog(@"%@s", Result);
+    NSLog(@"%@", Result);
 }
 
 - (void) retrieveGames
 {
-    
+    NSLog(@"%@", @"No Games Found");
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -60,11 +60,43 @@ int userid = 1;
     return cell;
 }
 
--(IBAction)Refresh:(id)sender
+- (IBAction)Friends_Games_Load:(id)sender
 {
-    [self retrieveFriends];
+    if (self.Friends_Games_Selector.selectedSegmentIndex == 0)
+    {
+        [self retrieveFriends];
+    }
+    if (self.Friends_Games_Selector.selectedSegmentIndex == 1)
+    {
+        [self retrieveGames];
+    }
 }
 
+-(IBAction)Friends_Games_Add:(id)sender
+{
+    if (self.Friends_Games_Selector.selectedSegmentIndex == 0)
+    {
+        UIAlertView * addfriend = [[UIAlertView alloc] initWithTitle:@"Add Friend" message:@"Enter the username you'd like to add as a friend." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
+        
+        addfriend.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [addfriend show];
+        [addfriend release];
+    }
+    
+    if (self.Friends_Games_Selector.selectedSegmentIndex == 1)
+    {
+        //Create Game
+    }
+}
+
+- (void)alertView:(UIAlertView *)addfriend clickedButtonAtIndex:(NSInteger)buttonindex
+{
+    if (buttonindex == 1)
+    {
+        NSString *username = [addfriend textFieldAtIndex:0].text;
+        NSLog(@"%@", username);
+    }
+}
 
 //Other Methods
 

@@ -273,7 +273,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="Refresh:" destination="2" eventType="touchUpInside" id="3gB-X1-Zvv"/>
+                                    <action selector="Friends_Games_Add:" destination="2" eventType="touchUpInside" id="Jqx-nr-Duc"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EeR-iT-iug">
@@ -284,6 +284,9 @@
                                     <segment title="Games"/>
                                 </segments>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="Friends_Games_Load:" destination="2" eventType="valueChanged" id="FFo-TK-RnG"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.40784317255020142" green="0.60392159223556519" blue="0.79215693473815918" alpha="1" colorSpace="deviceRGB"/>
@@ -303,7 +306,8 @@
                     <navigationItem key="navigationItem" id="LxI-gP-F7V"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="Refresh" destination="lye-Fn-Gw2" id="NoN-48-tyC"/>
+                        <outlet property="Friends_Games_Add" destination="lye-Fn-Gw2" id="2Mc-wl-cpw"/>
+                        <outlet property="Friends_Games_Selector" destination="EeR-iT-iug" id="PwQ-WL-8Z7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>

@@ -29,7 +29,7 @@
     //Put Returned Value Into String
     NSString *Result = [[NSString alloc] initWithData:RetreivedResult encoding:NSUTF8StringEncoding];
     
-    NSLog(@"%@s", Result);
+    NSLog(@"%@", Result);
    }
 
 -(IBAction)Cancel:(id)sender
