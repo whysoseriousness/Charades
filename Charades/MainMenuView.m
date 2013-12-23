@@ -81,6 +81,8 @@ int userid = 1;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"COUNT:%d",self.friends.count);
+    NSLog(@"FRIENDS:%@",self.friends);
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -91,13 +93,13 @@ int userid = 1;
     
     if (self.Friends_Games_Selector.selectedSegmentIndex == 0)
     {
-        cell.textLabel.text = [[self.friends objectAtIndex:[indexPath row]] objectForKey:@"friendusername"];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@", [[self.friends objectAtIndex:[indexPath row]] objectForKey:@"friendusername"]];
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         return cell;
     }
     if (self.Friends_Games_Selector.selectedSegmentIndex == 1)
     {
-        cell.textLabel.text = [[self.games objectAtIndex:[indexPath row]] objectForKey:@"game"];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@", [[self.games objectAtIndex:[indexPath row]] objectForKey:@"game"]];
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         return cell;
     }
