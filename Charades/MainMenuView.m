@@ -7,9 +7,6 @@
 //
 /*
  What to fix:
- 1. Friends array cant hold more than 1 friend (test friends to add - mark, brett)
- 2. Copied games array code doesnt properly displaying the games
-    Only the userid is being returned from the php not the usernames its showing
  3.Register view needs a keyboard return
 */
 
@@ -81,8 +78,6 @@ int userid = 1;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"COUNT:%d",self.friends.count);
-    NSLog(@"FRIENDS:%@",self.friends);
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -99,7 +94,7 @@ int userid = 1;
     }
     if (self.Friends_Games_Selector.selectedSegmentIndex == 1)
     {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@", [[self.games objectAtIndex:[indexPath row]] objectForKey:@"game"]];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@", [[self.games objectAtIndex:[indexPath row]] objectForKey:@"opponentid"]];
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         return cell;
     }
@@ -212,7 +207,7 @@ int userid = 1;
 {
     [super viewDidLoad];
     self.friends = [NSArray arrayWithObject:[NSDictionary dictionaryWithObject:@"" forKey:@"friendusername"] ];
-    self.games = [NSArray arrayWithObject:[NSDictionary dictionaryWithObject:@"" forKey:@"game"] ];
+    self.games = [NSArray arrayWithObject:[NSDictionary dictionaryWithObject:@"" forKey:@"opponenetid"] ];
     NSDictionary * currentUser = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentUser"];
     userid = [[currentUser objectForKey:@"userid"] intValue];
     [self retrieveFriends];
