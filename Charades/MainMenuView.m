@@ -5,6 +5,13 @@
 //  Created by Joshua Martin on 9/19/13.
 //  Copyright (c) 2013 Joshua Martin. All rights reserved.
 //
+/*
+ What to fix:
+ 1. Friends array cant hold more than 1 friend (test friends to add - mark, brett)
+ 2. Copied games array code doesnt properly displaying the games
+    Only the userid is being returned from the php not the usernames its showing
+ 3.Register view needs a keyboard return
+*/
 
 #import "MainMenuView.h"
 
@@ -13,7 +20,7 @@
 @end
 
 @implementation MainMenuView
-@synthesize friends, Friends_Games_Add, Friends_Games_Selector;
+@synthesize friends, games, Friends_Games_Add, Friends_Games_Selector;
 
 //Variables
 int userid = 1;
@@ -41,12 +48,35 @@ int userid = 1;
 
 - (void) retrieveGames
 {
-    NSLog(@"%@", @"No Games Found");
+    //Post Credentials
+    NSString *AuthenticationRequest = [NSString stringWithFormat:@"http://dylanellington.com/charades/games.php?userid=%d", userid];
+    
+    //Retrieve Result
+    NSData *RetreivedResult = [NSData dataWithContentsOfURL:[NSURL URLWithString:AuthenticationRequest]];
+    
+    //Parse Data Into Array
+    NSError* error;
+    NSArray* json = [NSJSONSerialization JSONObjectWithData:RetreivedResult options:kNilOptions error:&error];
+    
+    if( json && ![[NSString stringWithFormat:@"%@", [json objectAtIndex:0] ] isEqualToString:@"<null>"])
+    {
+        self.games = [json objectAtIndex: 0];
+        [self.tableView reloadData];
+    }
+
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.friends count];
+    if (self.Friends_Games_Selector.selectedSegmentIndex == 0)
+    {
+        return [self.friends count];
+    }
+    if (self.Friends_Games_Selector.selectedSegmentIndex == 1)
+    {
+        return [self.games count];
+    }
+    return 0;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -59,10 +89,19 @@ int userid = 1;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell
-    cell.textLabel.text = [[self.friends objectAtIndex:[indexPath row]] objectForKey:@"friendusername"];
-    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    return cell;
+    if (self.Friends_Games_Selector.selectedSegmentIndex == 0)
+    {
+        cell.textLabel.text = [[self.friends objectAtIndex:[indexPath row]] objectForKey:@"friendusername"];
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        return cell;
+    }
+    if (self.Friends_Games_Selector.selectedSegmentIndex == 1)
+    {
+        cell.textLabel.text = [[self.games objectAtIndex:[indexPath row]] objectForKey:@"game"];
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        return cell;
+    }
+    return 0;
 }
 
 - (IBAction)Friends_Games_Load:(id)sender
@@ -90,42 +129,77 @@ int userid = 1;
     
     if (self.Friends_Games_Selector.selectedSegmentIndex == 1)
     {
-        //Create Game
+        UIAlertView * creategame = [[UIAlertView alloc] initWithTitle:@"Create Game" message:@"Enter your opponents username." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Create", nil];
+        
+        creategame.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [creategame show];
+        [creategame release];
     }
 }
 
-- (void)alertView:(UIAlertView *)addfriend clickedButtonAtIndex:(NSInteger)buttonindex
+- (void)alertView:(UIAlertView *)friends_games_add clickedButtonAtIndex:(NSInteger)buttonindex
 {
-    if (buttonindex == 1)
-    {
-        NSString *username = [addfriend textFieldAtIndex:0].text;
-        NSString *AuthenticationRequest = [NSString stringWithFormat:@"http://dylanellington.com/charades/addfriend.php?userid=%d&friendusername=%@", userid, username];
-        
-        NSData *RetreivedResult = [NSData dataWithContentsOfURL:[NSURL URLWithString:AuthenticationRequest]];
-        
-        NSString *Result = [[NSString alloc] initWithData:RetreivedResult encoding:NSUTF8StringEncoding];
-        
-        if ([Result isEqualToString: @"Success."])
-        {
-            [self retrieveFriends];
-        }
-        
-        if ([Result isEqualToString: @"You are already friends with this user."])
-        {
-            UIAlertView * addfrienderror = [[UIAlertView alloc] initWithTitle:@"You're Already Friends With This User" message:@"" delegate:self cancelButtonTitle:@"Hide" otherButtonTitles: nil];
-            
-            addfrienderror.alertViewStyle = UIAlertViewStyleDefault;
-            [addfrienderror show];
-            [addfrienderror release];
-        }
 
-        if ([Result isEqualToString: @"Username doesn't exist."])
+    if (self.Friends_Games_Selector.selectedSegmentIndex == 0)
+    {
+        if (buttonindex == 1)
         {
-            UIAlertView * addfrienderror = [[UIAlertView alloc] initWithTitle:@"Username Doesn't Exist" message:@"" delegate:self cancelButtonTitle:@"Hide" otherButtonTitles: nil];
+            NSString *username = [friends_games_add textFieldAtIndex:0].text;
+            NSString *AuthenticationRequest = [NSString stringWithFormat:@"http://dylanellington.com/charades/addfriend.php?userid=%d&friendusername=%@", userid, username];
+        
+            NSData *RetreivedResult = [NSData dataWithContentsOfURL:[NSURL URLWithString:AuthenticationRequest]];
+        
+            NSString *Result = [[NSString alloc] initWithData:RetreivedResult encoding:NSUTF8StringEncoding];
+        
+            if ([Result isEqualToString: @"Success."])
+            {
+                [self retrieveFriends];
+            }
+        
+            if ([Result isEqualToString: @"You are already friends with this user."])
+            {
+                UIAlertView * addfrienderror = [[UIAlertView alloc] initWithTitle:@"You're Already Friends With This User" message:@"" delegate:self cancelButtonTitle:@"Hide" otherButtonTitles: nil];
             
-            addfrienderror.alertViewStyle = UIAlertViewStyleDefault;
-            [addfrienderror show];
-            [addfrienderror release];
+                addfrienderror.alertViewStyle = UIAlertViewStyleDefault;
+                [addfrienderror show];
+                [addfrienderror release];
+            }
+
+            if ([Result isEqualToString: @"Username doesn't exist."])
+            {
+                UIAlertView * addfrienderror = [[UIAlertView alloc] initWithTitle:@"Username Doesn't Exist" message:@"" delegate:self cancelButtonTitle:@"Hide" otherButtonTitles: nil];
+            
+                addfrienderror.alertViewStyle = UIAlertViewStyleDefault;
+                [addfrienderror show];
+                [addfrienderror release];
+            }
+        }
+    }
+    
+    if (self.Friends_Games_Selector.selectedSegmentIndex == 1)
+    {
+        if (buttonindex == 1)
+        {
+            NSString *username = [friends_games_add textFieldAtIndex:0].text;
+            NSString *AuthenticationRequest = [NSString stringWithFormat:@"http://dylanellington.com/charades/creategame.php?userid=%d&friendusername=%@", userid, username];
+            
+            NSData *RetreivedResult = [NSData dataWithContentsOfURL:[NSURL URLWithString:AuthenticationRequest]];
+        
+            NSString *Result = [[NSString alloc] initWithData:RetreivedResult encoding:NSUTF8StringEncoding];
+        
+            if ([Result isEqualToString: @"Success."])
+            {
+                [self retrieveGames];
+            }
+        
+            if ([Result isEqualToString: @"A game is already in progress."])
+            {
+                UIAlertView * creategameerror = [[UIAlertView alloc] initWithTitle:@"A Game Already Exists With This User" message:@"" delegate:self cancelButtonTitle:@"Hide" otherButtonTitles: nil];
+            
+                creategameerror.alertViewStyle = UIAlertViewStyleDefault;
+                [creategameerror show];
+                [creategameerror release];
+            }
         }
     }
 }
@@ -136,6 +210,7 @@ int userid = 1;
 {
     [super viewDidLoad];
     self.friends = [NSArray arrayWithObject:[NSDictionary dictionaryWithObject:@"" forKey:@"friendusername"] ];
+    self.games = [NSArray arrayWithObject:[NSDictionary dictionaryWithObject:@"" forKey:@"game"] ];
     NSDictionary * currentUser = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentUser"];
     userid = [[currentUser objectForKey:@"userid"] intValue];
     [self retrieveFriends];
