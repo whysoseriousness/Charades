@@ -60,10 +60,6 @@
 }
 
 //Other Methods
--(IBAction)keyboardhide:(id)sender
-{
-    [sender resignFirstResponder];
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"login"]) {

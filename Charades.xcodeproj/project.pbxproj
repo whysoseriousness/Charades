@@ -23,6 +23,8 @@
 		94C90C2017EABDF300A82566 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C90BFB17EABDF100A82566 /* Foundation.framework */; };
 		94C90C2817EABDF300A82566 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94C90C2617EABDF300A82566 /* InfoPlist.strings */; };
 		94C90C2B17EABDF300A82566 /* CharadesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C90C2A17EABDF300A82566 /* CharadesTests.m */; };
+		AC6666A0186942850048F023 /* TS1GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC66669F186942850048F023 /* TS1GameView.m */; };
+		AC6666A3186942AD0048F023 /* TS2GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6666A2186942AD0048F023 /* TS2GameView.m */; };
 		AC89A0B018603A6B00D064DA /* RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC89A0AF18603A6B00D064DA /* RegisterView.m */; };
 		ACC9C360183524AD00360E04 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9C35F183524AD00360E04 /* LoginView.m */; };
 /* End PBXBuildFile section */
@@ -60,6 +62,10 @@
 		94C90C2717EABDF300A82566 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		94C90C2917EABDF300A82566 /* CharadesTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharadesTests.h; sourceTree = "<group>"; };
 		94C90C2A17EABDF300A82566 /* CharadesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharadesTests.m; sourceTree = "<group>"; };
+		AC66669E186942840048F023 /* TS1GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TS1GameView.h; sourceTree = "<group>"; };
+		AC66669F186942850048F023 /* TS1GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TS1GameView.m; sourceTree = "<group>"; };
+		AC6666A1186942AD0048F023 /* TS2GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TS2GameView.h; sourceTree = "<group>"; };
+		AC6666A2186942AD0048F023 /* TS2GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TS2GameView.m; sourceTree = "<group>"; };
 		AC89A0AE18603A6B00D064DA /* RegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterView.h; sourceTree = "<group>"; };
 		AC89A0AF18603A6B00D064DA /* RegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterView.m; sourceTree = "<group>"; };
 		ACC9C35E183524AD00360E04 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
@@ -131,6 +137,10 @@
 				AC89A0AF18603A6B00D064DA /* RegisterView.m */,
 				94C90C1417EABDF100A82566 /* MainMenuView.h */,
 				94C90C1517EABDF200A82566 /* MainMenuView.m */,
+				AC66669E186942840048F023 /* TS1GameView.h */,
+				AC66669F186942850048F023 /* TS1GameView.m */,
+				AC6666A1186942AD0048F023 /* TS2GameView.h */,
+				AC6666A2186942AD0048F023 /* TS2GameView.m */,
 				94C90C1117EABDF100A82566 /* MainStoryboard.storyboard */,
 				94C90C0017EABDF100A82566 /* Supporting Files */,
 			);
@@ -280,11 +290,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC6666A3186942AD0048F023 /* TS2GameView.m in Sources */,
 				94C90C0617EABDF100A82566 /* main.m in Sources */,
 				94C90C0A17EABDF100A82566 /* AppDelegate.m in Sources */,
 				ACC9C360183524AD00360E04 /* LoginView.m in Sources */,
 				94C90C1617EABDF200A82566 /* MainMenuView.m in Sources */,
 				AC89A0B018603A6B00D064DA /* RegisterView.m in Sources */,
+				AC6666A0186942850048F023 /* TS1GameView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

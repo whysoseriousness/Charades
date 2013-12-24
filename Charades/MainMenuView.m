@@ -5,12 +5,10 @@
 //  Created by Joshua Martin on 9/19/13.
 //  Copyright (c) 2013 Joshua Martin. All rights reserved.
 //
-/*
- What to fix:
- 3.Register view needs a keyboard return
-*/
 
 #import "MainMenuView.h"
+#import "TS1GameView.h"
+#import "TS2GameView.h"
 
 @interface MainMenuView ()
 
@@ -99,6 +97,36 @@ int userid = 1;
         return cell;
     }
     return 0;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    if (self.Friends_Games_Selector.selectedSegmentIndex == 1)
+    {
+        NSString *turnstatus = [NSString stringWithFormat:@"%@", [[self.games objectAtIndex:[indexPath row]] objectForKey:@"turnstatus"]];
+        
+        NSString *segueidentifier = [NSString stringWithFormat:@"%@%@", @"TS", turnstatus];
+
+        [self performSegueWithIdentifier:segueidentifier sender:self];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if (self.Friends_Games_Selector.selectedSegmentIndex == 1)
+    {
+        if ([segue.identifier isEqualToString:@"TS1"])
+        {
+            TS1GameView *ts1gameview = (TS1GameView *)[segue destinationViewController];
+            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+            NSString *gameid = [[self.games objectAtIndex:[indexPath row]] objectForKey:@"gameid"];
+            ts1gameview.gameidts1 = gameid;
+        }
+        if ([segue.identifier isEqualToString:@"TS2"])
+        {
+           //pass data when needed
+        }
+    }
 }
 
 - (IBAction)Friends_Games_Load:(id)sender
