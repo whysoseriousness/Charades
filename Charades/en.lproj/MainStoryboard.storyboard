@@ -282,18 +282,18 @@
                         <outlet property="Friends_Games_Add" destination="lye-Fn-Gw2" id="2Mc-wl-cpw"/>
                         <outlet property="Friends_Games_Selector" destination="EeR-iT-iug" id="PwQ-WL-8Z7"/>
                         <outlet property="tableView" destination="2mj-Vr-N4u" id="7EY-M2-AL3"/>
-                        <segue destination="bfk-OS-CGi" kind="push" identifier="TS1" id="s0t-Yj-0vY"/>
-                        <segue destination="ZGa-ag-QcB" kind="push" identifier="TS2" id="pZH-C7-bDP"/>
+                        <segue destination="bfk-OS-CGi" kind="push" identifier="Player1" id="s0t-Yj-0vY"/>
+                        <segue destination="ZGa-ag-QcB" kind="push" identifier="Player2" id="pZH-C7-bDP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2411" y="-314"/>
         </scene>
-        <!--Game View-->
+        <!--Player2 Game View-->
         <scene sceneID="pjv-gl-88Z">
             <objects>
-                <viewController id="ZGa-ag-QcB" customClass="TS2GameView" sceneMemberID="viewController">
+                <viewController id="ZGa-ag-QcB" customClass="Player2GameView" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eWF-Ic-yPz"/>
                         <viewControllerLayoutGuide type="bottom" id="gbM-aE-8dJ"/>
@@ -382,10 +382,10 @@
             </objects>
             <point key="canvasLocation" x="2982" y="34"/>
         </scene>
-        <!--Game View-->
+        <!--Player1 Game View-->
         <scene sceneID="6dJ-oB-cDf">
             <objects>
-                <viewController id="bfk-OS-CGi" customClass="TS1GameView" sceneMemberID="viewController">
+                <viewController id="bfk-OS-CGi" customClass="Player1GameView" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lBG-Ia-tgp"/>
                         <viewControllerLayoutGuide type="bottom" id="yMB-sK-ewh"/>
@@ -402,6 +402,14 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                         <color key="textColor" red="0.40784317260000003" green="0.60392159219999997" blue="0.79215693470000004" alpha="1" colorSpace="deviceRGB"/>
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Status:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFM-PP-w2G">
+                                        <rect key="frame" x="20" y="10" width="117" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.042780609890000001" green="0.45774502649999999" blue="0.78587805710000003" alpha="0.92000000000000004" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.042780609890000001" green="0.45774502649999999" blue="0.78587805710000003" alpha="0.92000000000000004" colorSpace="calibratedRGB"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -430,6 +438,22 @@
                                 <connections>
                                     <action selector="Back:" destination="bfk-OS-CGi" eventType="touchUpInside" id="O7a-h5-nsq"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlY-Z2-IH0">
+                                <rect key="frame" x="64" y="369" width="85" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Take Video">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAE-9K-CxK">
+                                <rect key="frame" x="206" y="369" width="68" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.40784317260000003" green="0.60392159219999997" blue="0.79215693470000004" alpha="1" colorSpace="deviceRGB"/>

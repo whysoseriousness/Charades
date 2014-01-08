@@ -7,8 +7,8 @@
 //
 
 #import "MainMenuView.h"
-#import "TS1GameView.h"
-#import "TS2GameView.h"
+#import "Player1GameView.h"
+#import "Player2GameView.h"
 
 @interface MainMenuView ()
 
@@ -103,9 +103,9 @@ int userid = 1;
 {
     if (self.Friends_Games_Selector.selectedSegmentIndex == 1)
     {
-        NSString *turnstatus = [NSString stringWithFormat:@"%@", [[self.games objectAtIndex:[indexPath row]] objectForKey:@"turnstatus"]];
+        NSString *player = [NSString stringWithFormat:@"%@", [[self.games objectAtIndex:[indexPath row]] objectForKey:@"player"]];
         
-        NSString *segueidentifier = [NSString stringWithFormat:@"%@%@", @"TS", turnstatus];
+        NSString *segueidentifier = [NSString stringWithFormat:@"%@%@", @"Player", player];
 
         [self performSegueWithIdentifier:segueidentifier sender:self];
     }
@@ -115,14 +115,14 @@ int userid = 1;
 {
     if (self.Friends_Games_Selector.selectedSegmentIndex == 1)
     {
-        if ([segue.identifier isEqualToString:@"TS1"])
+        if ([segue.identifier isEqualToString:@"Player1"])
         {
-            TS1GameView *ts1gameview = (TS1GameView *)[segue destinationViewController];
+            Player1GameView *p1gameview = (Player1GameView *)[segue destinationViewController];
             NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-            NSString *gameid = [[self.games objectAtIndex:[indexPath row]] objectForKey:@"gameid"];
-            ts1gameview.gameidts1 = gameid;
+            NSString *_turnstatus = [[self.games objectAtIndex:[indexPath row]] objectForKey:@"turnstatus"];
+            p1gameview.turnstatus = _turnstatus;
         }
-        if ([segue.identifier isEqualToString:@"TS2"])
+        if ([segue.identifier isEqualToString:@"Player2"])
         {
            //pass data when needed
         }

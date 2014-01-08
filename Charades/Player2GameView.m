@@ -1,20 +1,20 @@
 //
-//  TS1GameView.m
+//  Player2GameView.m
 //  Charades
 //
 //  Created by Dylan Ellington on 12/23/13.
 //  Copyright (c) 2013 Joshua Martin. All rights reserved.
 //
 
-#import "TS1GameView.h"
+#import "Player2GameView.h"
 
-@interface TS1GameView ()
+@interface Player2GameView ()
 
 @end
 
-@implementation TS1GameView
+@implementation Player2GameView
 
-@synthesize Back, gameidts1;
+@synthesize Back;
 
 //Main Methods
 
@@ -37,8 +37,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"%@",gameidts1);
-    
 	// Do any additional setup after loading the view.
 }
 

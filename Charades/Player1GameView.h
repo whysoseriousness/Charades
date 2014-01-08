@@ -1,5 +1,5 @@
 //
-//  TS1GameView.h
+//  Player1GameView.h
 //  Charades
 //
 //  Created by Dylan Ellington on 12/23/13.
@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TS1GameView : UIViewController
+@interface Player1GameView : UIViewController
 {
     
 }
 
-@property (nonatomic, strong) NSString *gameidts1;
+@property (nonatomic, strong) NSString *turnstatus;
 @property (strong,nonatomic) IBOutlet UIButton *Back;
 
 - (IBAction)Back:(id)sender;

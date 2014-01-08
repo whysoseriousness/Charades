@@ -1,5 +1,5 @@
 //
-//  TS2GameView.h
+//  Player2GameView.h
 //  Charades
 //
 //  Created by Dylan Ellington on 12/23/13.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TS2GameView : UIViewController
+@interface Player2GameView : UIViewController
 {
     
 }
